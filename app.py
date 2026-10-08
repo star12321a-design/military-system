@@ -514,3 +514,12 @@ from http.server import SimpleHTTPRequestHandler
 def handler(request, response):
     # تحويل طلبات Vercel إلى Handler الخاص بك
     return app(request, response)
+import os
+from http.server import SimpleHTTPRequestHandler
+
+# أضف هذا الجزء في نهاية الملف تماماً بدلاً من handler القديمة:
+class VercelHandler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        super().do_GET()
+
+app = VercelHandler
