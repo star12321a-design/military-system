@@ -507,3 +507,10 @@ if __name__ == "__main__":
         server.serve_forever()
     except KeyboardInterrupt:
         print("\nتم إيقاف النظام.")
+from http.server import SimpleHTTPRequestHandler
+# ... بقية استيراداتك ودوالك كما هي ...
+
+# أضف هذا المعالج في أسفل الملف مباشرة
+def handler(request, response):
+    # تحويل طلبات Vercel إلى Handler الخاص بك
+    return app(request, response)
